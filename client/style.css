@@ -1,0 +1,38 @@
+body{
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+}
+#menu{
+    width: 100%;
+    height: 20vh;
+    background-color: aqua;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 400%;
+}
+#content{
+    width: 100%;
+    height: 80vh;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    list-style-type: none;
+}
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 4px solid black;
+    border-radius: 20px;
+    padding: 40px;
+}
