@@ -1,31 +1,26 @@
-async function checkLogin(){
-    const login =document.getElementById("login").value
+async function getUser(){
+    const login = document.getElementById("login").value
     const password = document.getElementById("password").value
-
+    
     const data = await fetch(`http://localhost:3000/login/${login}/${password}`)
-    console.log(login)
-    console.log(password)
     const json = await data.json()
-    console.log(json)
-}
-function checkAdmin(){
-    const admin = localStorage.getItem('login')
-    if(admin != 'admin'){
-        window.location.href = "/client/login.html"
-    }
-    checkIfLogged()
-}
-function checkIfLogged(){
-    const login = localStorage.getItem('login')
-    if(login == 'admin'){
-        const button = document.createElement("button")
-        button.innerHTML = "logout"
-        button.setAttribute("onclick","logout()")
-        document.getElementById("menu").appendChild(button)
-    }
-}
+    console.log(json)    
 
-function logout(){
-    localStorage.setItem('login','false')
-    window.location.reload()
+    if(json.user !=undefined){
+        localStorage.setItem('upr',JSON.stringify(json))
+    }
+    else{
+        localStorage.setItem('upr','false')
+    }
+
+}
+function checkUser(){
+    const user = JSON.parse(localStorage.getItem('upr'))
+    if(user.upr != "admin" && window.location.href.includes("/admin.html")){
+        window.location.href = "index.html"
+    }
+
+    if((user.upr != "user" ||user.upr !="admin" )&& window.location.href.includes("/user.html")){
+        window.location.href = "index.html"
+    }
 }
